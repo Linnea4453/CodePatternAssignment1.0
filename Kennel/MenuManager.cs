@@ -1,5 +1,7 @@
 ﻿using Kennel.Animal;
 using Kennel.Customer;
+using Kennel.ExtraService;
+using Kennel.Recepit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,7 @@ namespace Kennel.Menu
             Console.WriteLine("Press 7 to Check out Animal");
             Console.WriteLine("Press 8 to view all checkd in animals");
             Console.WriteLine("Press 9 to purchase animal service");
+          
         }
 
         public void MenuActions()
@@ -30,6 +33,10 @@ namespace Kennel.Menu
 
             ICustomer customer = Factory.CreateCustomer();
             IAnimal animal = Factory.CreateAnimal();
+            IStandardService standardService = Factory.CreateStandardService();
+            IWash wash = Factory.CreateWash();
+            IClawCutting clawCutting = Factory.CreateClawCutting();
+            IReceipt receipt = Factory.CreateReceipt();
 
             List<ICustomer> customers = new List<ICustomer>();
             List<IAnimal> animals = new List<IAnimal>();
@@ -64,7 +71,7 @@ namespace Kennel.Menu
                         break;
                     case "5":
                         Console.Clear();
-                        animal.GetAnimalsWithOwner(animals);
+                        animal.GetAnimalsWithOwner(animals); // Funkar
                         break;
                     case "6":
                         Console.Clear();
@@ -72,11 +79,15 @@ namespace Kennel.Menu
                         break;
                     case "7":
                         Console.Clear();
-                        animal.CheckOutAnimal(animals, animal); // Funkar
+                        animal.CheckOutAnimal(animals, animal, receipt, standardService, clawCutting, wash); // Funkar
                         break;
                     case "8":
                         Console.Clear();
                         animal.GetCheckedInAnimals(animals ); // Funkar
+                        break;
+                    case "9":
+                        Console.Clear();
+                        animal.SetExtraServices(animals, animal); 
                         break;
                     default:
                         Console.Clear();

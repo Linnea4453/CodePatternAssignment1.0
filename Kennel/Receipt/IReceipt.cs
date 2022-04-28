@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Kennel.Animal;
+using Kennel.ExtraService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +10,12 @@ namespace Kennel.Recepit
 {
     public interface IReceipt
     {
-        public int BasciCost { get; set; }
-        public int TotalCost { get; set; }
+        public IStandardService StandardService { get; set; }
+        public IWash Wash { get; set; }
+        public IClawCutting ClawCutting { get; set; }
+        public decimal TotalCost { get; set; }
+
+        public void ShowReceipt(IStandardService standardService, IClawCutting clawCutting, IWash wash, List<IAnimal> animals, IAnimal animal);
     }
 }
+               

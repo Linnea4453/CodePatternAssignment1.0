@@ -33,21 +33,6 @@ namespace Kennel.Customer
                     Console.WriteLine("You are now registreted as a new customer at our Kennel ");
                      customer.SaveCustomer(customer, customers);
                 
-
-                //Console.WriteLine("What's your name?");
-                //customer.Name = Console.ReadLine();
-                //if (!Verfication.VerifyUserName(Name))
-                //{
-
-                //    Console.WriteLine("That´s not right, try again!");
-
-                //}
-                //else
-                //{
-                //    Console.WriteLine($" Welcome : {customer.Name} to this kennel. ");
-                //    customer.SaveCustomer(customer, customers);
-                //}
-
             
         }
 
@@ -55,7 +40,7 @@ namespace Kennel.Customer
         {
             foreach (var customer in customers)
             {
-                Console.WriteLine($"CustomerName :  {customer.Name}");
+                Console.WriteLine($"CustomerName : {customer.Name}");
             }
         }
 
